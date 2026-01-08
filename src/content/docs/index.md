@@ -248,18 +248,18 @@ pagination: false
           <a href="/blog/nestjs-getting-started/">Read More</a>
         </div>
         <div class="blog-card">
-          <h3>JavaScript Async/Await</h3>
+          <h3>Advanced NestJS Patterns</h3>
           <p>
-            Master asynchronous programming in JavaScript with async/await syntax and promises. Learn best practices and common patterns.
+            Explore advanced architectural patterns and best practices for building enterprise-grade applications with NestJS.
           </p>
-          <a href="/blog/js-async-await/">Read More</a>
+          <a href="/blog/nestjs-getting-started/">Read More</a>
         </div>
         <div class="blog-card">
-          <h3>Database Integration with Node.js</h3>
+          <h3>NestJS Microservices</h3>
           <p>
-            Learn how to integrate databases with Node.js applications using popular ORMs and database drivers.
+            Learn how to build and deploy microservices architectures using NestJS with different transport layers.
           </p>
-          <a href="/blog/nodejs-express-database-integration/">Read More</a>
+          <a href="/blog/nestjs-getting-started/">Read More</a>
         </div>
       </div>
       <div class="view-all">

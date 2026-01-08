@@ -6,6 +6,7 @@ editUrl: false
 lastUpdated: false
 toc: false
 pagination: false
+sidebar: false
 ---
 
 <div class="about-hero">
