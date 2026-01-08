@@ -1,6 +1,6 @@
 # Kyaw Soe's Developer Blog
 
-A production-ready developer blog built with Astro and Starlight, inspired by [takkatho.dev](https://www.takkatho.dev).
+A production-ready developer blog built with Astro and Starlight.
 
 ## Features
 
@@ -23,17 +23,19 @@ A production-ready developer blog built with Astro and Starlight, inspired by [t
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - npm or yarn
 
 ### Setup
 
 1. Install dependencies:
+
    ```bash
    npm install
    ```
 
 2. Start development server:
+
    ```bash
    npm run dev
    ```
@@ -46,12 +48,12 @@ Create new blog posts in `src/content/blog/` with the following frontmatter:
 
 ```markdown
 ---
-title: 'Your Blog Post Title'
-description: 'Brief description of your post'
+title: "Your Blog Post Title"
+description: "Brief description of your post"
 pubDate: 2024-01-01
-author: 'Your Name'
-tags: ['tag1', 'tag2', 'tag3']
-category: 'Category Name'
+author: "Your Name"
+tags: ["tag1", "tag2", "tag3"]
+category: "Category Name"
 readingTime: 5
 draft: false
 ---
