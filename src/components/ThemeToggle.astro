@@ -1,0 +1,96 @@
+<div class="theme-toggle-wrapper">
+  <button
+    id="theme-toggle"
+    aria-label="Toggle dark/light mode"
+    class="theme-toggle"
+    title="Toggle dark/light mode"
+  >
+    <span id="theme-icon" aria-hidden="true">☀️</span>
+  </button>
+</div>
+
+<script>
+  // Theme switching functionality
+  document.addEventListener("DOMContentLoaded", function () {
+    // Initialize theme - default to light if no preference
+    let currentTheme = localStorage.getItem("theme") || "light";
+
+    // Set up the toggle button
+    const themeToggle = document.getElementById("theme-toggle")!;
+    const themeIcon = document.getElementById("theme-icon")!;
+
+    // Apply the initial theme and set the correct icon
+    applyThemeAndSetIcon(currentTheme);
+
+    themeToggle.addEventListener("click", function () {
+      // Cycle between light and dark only
+      const newTheme = currentTheme === "light" ? "dark" : "light";
+      currentTheme = newTheme;
+      localStorage.setItem("theme", newTheme);
+      applyThemeAndSetIcon(newTheme);
+    });
+
+    function applyThemeAndSetIcon(theme: any) {
+      // Apply the theme to the document element
+      document.documentElement.setAttribute("data-theme", theme);
+      document.documentElement.classList.remove("light", "dark");
+      document.documentElement.classList.add(theme);
+
+      // Update the icon based on the theme
+      updateIcon(theme);
+    }
+
+    function updateIcon(theme: any) {
+      let icon;
+      switch (theme) {
+        case "light":
+          icon = "☀️"; // Sun icon for light mode
+          break;
+        case "dark":
+          icon = "🌙"; // Moon icon for dark mode
+          break;
+        default:
+          icon = "☀️"; // Default to sun icon
+          break;
+      }
+
+      themeIcon.textContent = icon;
+      themeToggle.setAttribute(
+        "aria-label",
+        `Switch to ${theme === "light" ? "dark" : "light"} mode`
+      );
+      themeToggle.setAttribute("title", `Current theme: ${theme}`);
+    }
+  });
+</script>
+
+<style>
+  .theme-toggle-wrapper {
+    display: inline-block;
+  }
+
+  .theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    color: var(--sl-color-text);
+  }
+
+  .theme-toggle:hover {
+    background-color: var(--sl-color-gray-5);
+  }
+
+  .theme-toggle:focus {
+    outline: 2px solid var(--sl-color-accent);
+    outline-offset: 2px;
+  }
+</style>

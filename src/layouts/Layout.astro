@@ -1,11 +1,18 @@
+---
+import Header from "../components/Header.astro";
+---
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Astro</title>
-    <link rel="icon" href="/favicon.svg" />
+    <title>{Astro.props.title || "Astro"}</title>
+    <link rel="icon" href="/favicon.svg" type="image/x-icon" />
   </head>
-  <body class="min-h-screen bg-white text-gray-900">
-    <slot />
+  <body class="min-h-screen bg-white text-gray-900" data-pagefind-body>
+    <Header />
+    <main>
+      <slot />
+    </main>
   </body>
 </html>

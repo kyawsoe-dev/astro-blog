@@ -1,0 +1,779 @@
+---
+title: 'Kyaw Soe - Developer Portfolio'
+description: 'Full-stack developer passionate about building web applications and sharing knowledge with the developer community.'
+template: 'page'
+editUrl: false
+lastUpdated: false
+toc: false
+pagination: false
+---
+
+<div class="developer-home">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Hi, I'm <span class="highlight">Kyaw Soe</span></h1>
+          <h2>A <span class="typed-text">Full-Stack Developer</span></h2>
+          <p>
+            I build modern web applications with JavaScript, TypeScript, and
+            cutting-edge frameworks.
+          </p>
+          <div class="hero-buttons">
+            <a href="/about/" class="btn btn-primary">About Me</a>
+            <a href="/blog/" class="btn btn-secondary">View Blog</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img src="/me.jpg" alt="Kyaw Soe - Developer" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="skills-section">
+    <div class="container">
+      <h2>Technical Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>Frontend</h3>
+          <ul>
+            <li>JavaScript (ES6+)</li>
+            <li>TypeScript</li>
+            <li>React</li>
+            <li>Astro</li>
+            <li>Next.js</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <h3>Backend</h3>
+          <ul>
+            <li>Node.js</li>
+            <li>NestJS</li>
+            <li>Express</li>
+            <li>Prisma</li>
+            <li>MongoDB</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <h3>Tools & Others</h3>
+          <ul>
+            <li>Git & GitHub</li>
+            <li>Docker</li>
+            <li>CI/CD</li>
+            <li>Testing</li>
+            <li>Performance</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="projects-section">
+    <div class="container">
+      <h2>Featured Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <h3>Project Name</h3>
+          <p>Brief description of the project and technologies used.</p>
+          <div class="project-tags">
+            <span class="tag">React</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">Node.js</span>
+          </div>
+        </div>
+        <div class="project-card">
+          <h3>Project Name</h3>
+          <p>Brief description of the project and technologies used.</p>
+          <div class="project-tags">
+            <span class="tag">Astro</span>
+            <span class="tag">Tailwind CSS</span>
+            <span class="tag">Vercel</span>
+          </div>
+        </div>
+        <div class="project-card">
+          <h3>Project Name</h3>
+          <p>Brief description of the project and technologies used.</p>
+          <div class="project-tags">
+            <span class="tag">Next.js</span>
+            <span class="tag">MongoDB</span>
+            <span class="tag">Prisma</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section class="blog-section">
+    <div class="container">
+      <h2>Latest Blog Posts</h2>
+      <div class="blog-grid">
+        <div class="blog-card">
+          <h3>Article Title</h3>
+          <p>
+            Short description of the article content and what readers will
+            learn.
+          </p>
+          <a href="/blog/article-url">Read More</a>
+        </div>
+        <div class="blog-card">
+          <h3>Article Title</h3>
+          <p>
+            Short description of the article content and what readers will
+            learn.
+          </p>
+          <a href="/blog/article-url">Read More</a>
+        </div>
+        <div class="blog-card">
+          <h3>Article Title</h3>
+          <p>
+            Short description of the article content and what readers will
+            learn.
+          </p>
+          <a href="/blog/article-url">Read More</a>
+        </div>
+      </div>
+      <div class="view-all">
+        <a href="/blog/" class="btn btn-secondary">View All Posts</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <div class="container">
+      <h2>Get In Touch</h2>
+      <p>
+        Have a project in mind or want to discuss tech? Feel free to reach
+        out!
+      </p>
+      <div class="contact-buttons">
+        <a href="mailto:kyawsoedeveloper@gmail.com" class="btn btn-primary"
+          >Email Me</a
+        >
+        <a
+          href="https://github.com/kyawsoe-dev"
+          target="_blank"
+          class="btn btn-secondary">GitHub</a
+        >
+      </div>
+    </div>
+  </section>
+</div>
+
+<style>
+  :root {
+    --primary: #3182ce;
+    --primary-dark: #2c5282;
+    --secondary: #ebf8ff;
+    --accent: #4299e1;
+    --text: #4a5568;
+    --text-light: #718096;
+    --text-dark: #1a202c;
+    --bg-light: #f7fafc;
+    --border: #e2e8f0;
+    --card-bg: #ffffff;
+    --shadow: rgba(0, 0, 0, 0.05);
+  }
+
+  .developer-home {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    line-height: 1.6;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e6f6ff 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-section::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(49, 130, 206, 0.05) 0%, transparent 70%);
+    z-index: 0;
+  }
+
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-text h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+    line-height: 1.2;
+    font-weight: 800;
+  }
+
+  .hero-text h1 .highlight {
+    color: var(--primary);
+    position: relative;
+  }
+
+  .hero-text h1 .highlight::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--primary);
+    border-radius: 2px;
+    opacity: 0.3;
+  }
+
+  .hero-text h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .typed-text {
+    color: var(--primary);
+    font-weight: 700;
+    position: relative;
+  }
+
+  .typed-text::after {
+    content: "|";
+    animation: blink 1s infinite;
+    margin-left: 0.2rem;
+    color: var(--primary);
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .hero-text p {
+    font-size: 1.25rem;
+    margin-bottom: 2.5rem;
+    color: var(--text);
+    max-width: 90%;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.9rem 2rem;
+    border-radius: 0.75rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 4px 6px var(--shadow);
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: 0.5s;
+  }
+
+  .btn:hover::before {
+    left: 100%;
+  }
+
+  .btn-primary {
+    background-color: var(--primary);
+    color: white;
+    box-shadow: 0 4px 15px rgba(49, 130, 206, 0.3);
+  }
+
+  .btn-primary:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(49, 130, 206, 0.4);
+  }
+
+  .btn-secondary {
+    background-color: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--secondary);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(49, 130, 206, 0.2);
+  }
+
+  .hero-image {
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-image img {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 50%;
+    border: 5px solid var(--secondary);
+    box-shadow: 0 25px 50px -12px var(--shadow);
+    transition: transform 0.3s ease;
+  }
+
+  .hero-image img:hover {
+    transform: scale(1.05);
+  }
+
+  /* Skills Section */
+  .skills-section {
+    padding: 6rem 0;
+    background-color: var(--card-bg);
+  }
+
+  .skills-section h2 {
+    text-align: center;
+    font-size: 2.75rem;
+    margin-bottom: 4rem;
+    color: var(--text-dark);
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .skills-section h2::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--primary);
+    border-radius: 2px;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+  }
+
+  .skill-card {
+    background: var(--bg-light);
+    padding: 2.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 15px -3px var(--shadow);
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .skill-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: var(--primary);
+  }
+
+  .skill-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 25px -5px var(--shadow);
+  }
+
+  .skill-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .skill-card h3::before {
+    content: "▹";
+    color: var(--primary);
+    font-size: 1.8rem;
+  }
+
+  .skill-card ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .skill-card li {
+    padding: 0.5rem 0;
+    color: var(--text);
+    position: relative;
+    padding-left: 1.5rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .skill-card li::before {
+    content: "✓";
+    color: var(--primary);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    background: rgba(49, 130, 206, 0.1);
+    border-radius: 50%;
+    font-size: 0.75rem;
+  }
+
+  /* Projects Section */
+  .projects-section {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e6f6ff 100%);
+  }
+
+  .projects-section h2 {
+    text-align: center;
+    font-size: 2.75rem;
+    margin-bottom: 4rem;
+    color: var(--text-dark);
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .projects-section h2::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--primary);
+    border-radius: 2px;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+  }
+
+  .project-card {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 15px -3px var(--shadow);
+    border: 1px solid var(--border);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 5px;
+    background: var(--primary);
+    transition: width 0.4s ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px -12px var(--shadow);
+  }
+
+  .project-card:hover::before {
+    width: 100%;
+  }
+
+  .project-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-dark);
+  }
+
+  .project-card p {
+    color: var(--text);
+    margin-bottom: 1.5rem;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .tag {
+    background: var(--secondary);
+    color: var(--primary);
+    padding: 0.4rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+
+  .tag:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+  }
+
+  /* Blog Section */
+  .blog-section {
+    padding: 6rem 0;
+    background-color: var(--card-bg);
+  }
+
+  .blog-section h2 {
+    text-align: center;
+    font-size: 2.75rem;
+    margin-bottom: 4rem;
+    color: var(--text-dark);
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .blog-section h2::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--primary);
+    border-radius: 2px;
+  }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .blog-card {
+    background: var(--bg-light);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 15px -3px var(--shadow);
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+  }
+
+  .blog-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px var(--shadow);
+  }
+
+  .blog-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+  }
+
+  .blog-card p {
+    color: var(--text);
+    margin-bottom: 1.5rem;
+  }
+
+  .blog-card a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+  }
+
+  .blog-card a:hover {
+    color: var(--primary-dark);
+    gap: 0.75rem;
+  }
+
+  .view-all {
+    text-align: center;
+  }
+
+  /* Contact Section */
+  .contact-section {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e6f6ff 100%);
+    text-align: center;
+  }
+
+  .contact-section h2 {
+    font-size: 2.75rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .contact-section h2::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--primary);
+    border-radius: 2px;
+  }
+
+  .contact-section p {
+    font-size: 1.25rem;
+    color: var(--text);
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .contact-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 992px) {
+    .hero-content {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .hero-text p {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-buttons {
+      justify-content: center;
+    }
+
+    .hero-section {
+      padding: 4rem 0;
+    }
+
+    .hero-text h1 {
+      font-size: 2.8rem;
+    }
+
+    .hero-text h2 {
+      font-size: 1.75rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 0 1rem;
+    }
+
+    .hero-section {
+      padding: 3rem 0;
+    }
+
+    .hero-text h1 {
+      font-size: 2.3rem;
+    }
+
+    .hero-text h2 {
+      font-size: 1.5rem;
+    }
+
+    .skills-section,
+    .projects-section,
+    .blog-section,
+    .contact-section {
+      padding: 4rem 0;
+    }
+
+    .skills-section h2,
+    .projects-section h2,
+    .blog-section h2,
+    .contact-section h2 {
+      font-size: 2.25rem;
+    }
+
+    .contact-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .btn {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-text h1 {
+      font-size: 2rem;
+    }
+
+    .hero-text h2 {
+      font-size: 1.3rem;
+    }
+
+    .hero-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .btn {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+</style>

@@ -1,0 +1,114 @@
+---
+// Blog Post Layout
+import Layout from './Layout.astro';
+
+export interface Props {
+  frontmatter: {
+    title: string;
+    description: string;
+    pubDate: Date;
+    author: string;
+    heroImage?: string;
+    tags?: string[];
+    category?: string;
+    draft?: boolean;
+    readingTime?: number;
+  };
+}
+
+const { frontmatter } = Astro.props;
+
+// Format date consistently
+const formattedDate = new Date(frontmatter.pubDate).toLocaleDateString(
+  'en-US',
+  { year: 'numeric', month: 'long', day: 'numeric' }
+);
+
+// In a real implementation, you'd pass the content of the post to calculate reading time
+const readingTime = frontmatter.readingTime || 5; // Default to 5 minutes if not provided
+---
+
+<Layout title={frontmatter.title} description={frontmatter.description}>
+  <article class="blog-post">
+    <header>
+      <h1>{frontmatter.title}</h1>
+      <div class="meta">
+        <span class="author">By {frontmatter.author}</span>
+        <span class="date">{formattedDate}</span>
+        <span class="reading-time">{readingTime} min read</span>
+      </div>
+      {frontmatter.tags && frontmatter.tags.length > 0 && (
+        <div class="tags">
+          {frontmatter.tags.map((tag) => (
+            <span class="tag">{tag}</span>
+          ))}
+        </div>
+      )}
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer>
+      <div class="author-card">
+        <img src="/src/assets/logo.png" alt={frontmatter.author} width="80" height="80" />
+        <div>
+          <h3>About the Author</h3>
+          <p>{frontmatter.author} is a passionate developer sharing knowledge and experiences.</p>
+        </div>
+      </div>
+    </footer>
+  </article>
+</Layout>
+
+<style>
+  .blog-post {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .blog-post header {
+    margin-bottom: 2rem;
+  }
+
+  .blog-post h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--astro-text-accent);
+  }
+
+  .meta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    color: var(--astro-text-secondary);
+  }
+
+  .tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    background-color: var(--astro-accent);
+    color: var(--astro-text-accent);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+  }
+
+  .author-card {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--astro-border);
+  }
+
+  .author-card img {
+    border-radius: 50%;
+  }
+</style>

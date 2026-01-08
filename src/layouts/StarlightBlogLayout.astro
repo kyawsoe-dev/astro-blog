@@ -1,0 +1,60 @@
+---
+import { ContentPage } from 'f:@astrojs/starlight/components/ContentPage.astro';
+
+// This layout extends Starlight's default content page
+// It adds technology badges and level indicators to blog posts
+---
+
+<ContentPage>
+  <div class="blog-meta-enhanced">
+    {Astro.props.frontmatter.technology && (
+      <span class="tech-badge">{Astro.props.frontmatter.technology}</span>
+    )}
+    {Astro.props.frontmatter.level && (
+      <span class={`level-badge level-${Astro.props.frontmatter.level}`}>
+        {Astro.props.frontmatter.level.charAt(0).toUpperCase() + Astro.props.frontmatter.level.slice(1)}
+      </span>
+    )}
+  </div>
+  <slot />
+</ContentPage>
+
+<style>
+  .blog-meta-enhanced {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .tech-badge {
+    background-color: #3b82f6; /* Tailwind blue-500 */
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .level-badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .level-beginner {
+    background-color: #10b981; /* Tailwind green-500 */
+    color: white;
+  }
+
+  .level-intermediate {
+    background-color: #f59e0b; /* Tailwind amber-500 */
+    color: white;
+  }
+
+  .level-advanced {
+    background-color: #ef4444; /* Tailwind red-500 */
+    color: white;
+  }
+</style>

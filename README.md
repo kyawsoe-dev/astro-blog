@@ -1,49 +1,102 @@
-# Starlight Starter Kit: Basics
+# Kyaw Soe's Developer Blog
 
-[![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
+A production-ready developer blog built with Astro and Starlight, inspired by [takkatho.dev](https://www.takkatho.dev).
 
+## Features
+
+- ✅ Modern blog with category and tag filtering
+- ✅ Responsive design with mobile-first approach
+- ✅ SEO optimized with proper metadata
+- ✅ Fast performance with Vercel integration
+- ✅ Built-in search functionality
+- ✅ Pagination for blog posts
+- ✅ Analytics and performance monitoring
+
+## Tech Stack
+
+- [Astro](https://astro.build/) - Modern static site builder
+- [Starlight](https://starlight.astro.build/) - Documentation framework
+- [Vercel](https://vercel.com/) - Deployment platform
+- [Vercel Analytics](https://vercel.com/analytics) - Performance monitoring
+
+## Development
+
+### Prerequisites
+
+- Node.js 18+ 
+- npm or yarn
+
+### Setup
+
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+2. Start development server:
+   ```bash
+   npm run dev
+   ```
+
+3. Open [http://localhost:4321](http://localhost:4321) in your browser
+
+### Adding Blog Posts
+
+Create new blog posts in `src/content/blog/` with the following frontmatter:
+
+```markdown
+---
+title: 'Your Blog Post Title'
+description: 'Brief description of your post'
+pubDate: 2024-01-01
+author: 'Your Name'
+tags: ['tag1', 'tag2', 'tag3']
+category: 'Category Name'
+readingTime: 5
+draft: false
+---
+
+Your blog content here...
 ```
-npm create astro@latest -- --template starlight
+
+## Deployment
+
+### Vercel (Recommended)
+
+This project is optimized for Vercel deployment:
+
+1. Push your code to a Git repository
+2. Connect your repository to [Vercel](https://vercel.com/)
+3. Set the following environment variables:
+   - `VERCEL_PROJECT_ID`: Your Vercel project ID for analytics
+4. Vercel will automatically detect this as an Astro project and build it
+
+### Environment Variables
+
+- `VERCEL_PROJECT_ID`: Required for Vercel Analytics (when deploying to Vercel)
+
+### Manual Deployment
+
+```bash
+npm run build
+# The built site will be in the `dist` directory
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Performance
 
-## 🚀 Project Structure
+- Bundle size optimized
+- Asset compression enabled
+- Critical CSS inlined
+- Images optimized with Sharp
+- Vercel Speed Insights integrated
 
-Inside of your Astro + Starlight project, you'll see the following folders and files:
+## Contributing
 
-```
-.
-├── public/
-├── src/
-│   ├── assets/
-│   ├── content/
-│   │   └── docs/
-│   └── content.config.ts
-├── astro.config.mjs
-├── package.json
-└── tsconfig.json
-```
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
 
-Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
+## License
 
-Images can be added to `src/assets/` and embedded in Markdown with a relative link.
-
-Static assets, like favicons, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
+This project is open source and available under the [MIT License](LICENSE).

@@ -1,0 +1,234 @@
+---
+// Course Layout Component
+import Layout from '../layouts/Layout.astro';
+
+export interface Props {
+  frontmatter: {
+    title: string;
+    description: string;
+    author: string;
+    heroImage?: string;
+    difficulty: 'beginner' | 'intermediate' | 'advanced';
+    duration?: string;
+    lessonsCount: number;
+    prerequisites?: string[];
+    goals?: string[];
+    tags?: string[];
+    technology?: string;
+    published: boolean;
+  };
+  lessons: {
+    slug: string;
+    title: string;
+    lessonNumber: number;
+    description: string;
+  }[];
+}
+
+const { frontmatter, lessons } = Astro.props;
+
+// Sort lessons by lesson number
+const sortedLessons = lessons.sort((a, b) => a.lessonNumber - b.lessonNumber);
+---
+
+<Layout title={frontmatter.title} description={frontmatter.description}>
+  <article class="course-page">
+    <header class="course-header">
+      <h1>{frontmatter.title}</h1>
+      <p class="course-description">{frontmatter.description}</p>
+      
+      <div class="course-meta">
+        <div class="course-badge difficulty-{frontmatter.difficulty}">
+          {frontmatter.difficulty.charAt(0).toUpperCase() + frontmatter.difficulty.slice(1)}
+        </div>
+        {frontmatter.duration && (
+          <div class="course-badge duration">
+            Duration: {frontmatter.duration}
+          </div>
+        )}
+        <div class="course-badge lessons">
+          {frontmatter.lessonsCount} Lessons
+        </div>
+        {frontmatter.technology && (
+          <div class="course-badge technology">
+            {frontmatter.technology}
+          </div>
+        )}
+      </div>
+      
+      {frontmatter.goals && frontmatter.goals.length > 0 && (
+        <div class="course-goals">
+          <h3>What You'll Learn</h3>
+          <ul>
+            {frontmatter.goals.map(goal => (
+              <li key={goal}>{goal}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+      
+      {frontmatter.prerequisites && frontmatter.prerequisites.length > 0 && (
+        <div class="course-prerequisites">
+          <h3>Prerequisites</h3>
+          <ul>
+            {frontmatter.prerequisites.map(prereq => (
+              <li key={prereq}>{prereq}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </header>
+    
+    <section class="course-lessons">
+      <h2>Course Lessons</h2>
+      <ol class="lessons-list">
+        {sortedLessons.map(lesson => (
+          <li key={lesson.slug} class="lesson-item">
+            <a href={`/blog//${lesson.slug}/`} class="lesson-link">
+              <span class="lesson-number">Lesson {lesson.lessonNumber}</span>
+              <h3 class="lesson-title">{lesson.title}</h3>
+              <p class="lesson-description">{lesson.description}</p>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </section>
+  </article>
+</Layout>
+
+<style>
+  .course-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  .course-header {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--sl-color-gray-5);
+  }
+
+  .course-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--sl-color-text);
+  }
+
+  .course-description {
+    font-size: 1.2rem;
+    color: var(--sl-color-text-light);
+    margin-bottom: 1.5rem;
+  }
+
+  .course-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .course-badge {
+    background-color: var(--sl-color-accent-low);
+    color: var(--sl-color-accent-high);
+    padding: 0.3rem 0.8rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .difficulty-beginner {
+    background-color: #dcfce7;
+    color: #166534;
+  }
+
+  .difficulty-intermediate {
+    background-color: #fef3c7;
+    color: #92400e;
+  }
+
+  .difficulty-advanced {
+    background-color: #fee2e2;
+    color: #b91c1c;
+  }
+
+  .course-goals, .course-prerequisites {
+    margin: 1.5rem 0;
+  }
+
+  .course-goals h3, .course-prerequisites h3 {
+    margin-bottom: 0.75rem;
+    color: var(--sl-color-accent-high);
+  }
+
+  .course-goals ul, .course-prerequisites ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .course-goals li, .course-prerequisites li {
+    padding: 0.25rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+
+  .course-goals li:before, .course-prerequisites li:before {
+    content: "•";
+    color: var(--sl-color-accent-high);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+  }
+
+  .course-lessons h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--sl-color-text);
+  }
+
+  .lessons-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .lesson-item {
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--sl-color-gray-4);
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+
+  .lesson-link {
+    display: block;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    transition: background-color 0.2s ease;
+  }
+
+  .lesson-link:hover {
+    background-color: var(--sl-color-gray-2);
+  }
+
+  .lesson-number {
+    display: inline-block;
+    background-color: var(--sl-color-accent-low);
+    color: var(--sl-color-accent-high);
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .lesson-title {
+    font-size: 1.3rem;
+    margin: 0.5rem 0;
+    color: var(--sl-color-accent-high);
+  }
+
+  .lesson-description {
+    color: var(--sl-color-text-light);
+    margin: 0;
+  }
+</style>

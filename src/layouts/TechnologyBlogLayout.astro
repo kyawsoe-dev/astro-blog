@@ -1,0 +1,200 @@
+---
+// Enhanced Blog Post Layout with Technology Focus
+import Layout from './Layout.astro';
+
+export interface Props {
+  frontmatter: {
+    title: string;
+    description: string;
+    pubDate: Date;
+    author: string;
+    heroImage?: string;
+    tags?: string[];
+    category?: string;
+    technology?: string;  // New field for specific technology
+    level?: 'beginner' | 'intermediate' | 'advanced';  // New field for difficulty level
+    draft?: boolean;
+    readingTime?: number;
+  };
+}
+
+const { frontmatter } = Astro.props;
+
+// Format date consistently
+const formattedDate = new Date(frontmatter.pubDate).toLocaleDateString(
+  'en-US',
+  { year: 'numeric', month: 'long', day: 'numeric' }
+);
+
+// In a real implementation, you'd pass the content of the post to calculate reading time
+const readingTime = frontmatter.readingTime || 5; // Default to 5 minutes if not provided
+---
+
+<Layout title={frontmatter.title} description={frontmatter.description}>
+  <article class="blog-post">
+    <header>
+      <h1>{frontmatter.title}</h1>
+      <div class="meta">
+        <span class="author">By {frontmatter.author}</span>
+        <span class="date">{formattedDate}</span>
+        <span class="reading-time">{readingTime} min read</span>
+        
+        <!-- Technology and Level badges -->
+        {frontmatter.technology && (
+          <span class="tech-badge">{frontmatter.technology}</span>
+        )}
+        
+        {frontmatter.level && (
+          <span class={`level-badge level-${frontmatter.level}`}>
+            {frontmatter.level.charAt(0).toUpperCase() + frontmatter.level.slice(1)}
+          </span>
+        )}
+      </div>
+      
+      {frontmatter.tags && frontmatter.tags.length > 0 && (
+        <div class="tags">
+          {frontmatter.tags.map((tag) => (
+            <span class="tag">{tag}</span>
+          ))}
+        </div>
+      )}
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer>
+      <div class="author-card">
+        <img src="/src/assets/logo.png" alt={frontmatter.author} width="80" height="80" />
+        <div>
+          <h3>About the Author</h3>
+          <p>{frontmatter.author} is a passionate developer sharing knowledge and experiences.</p>
+        </div>
+      </div>
+      
+      <!-- Related posts section -->
+      <div class="related-posts">
+        <h3>Related Articles</h3>
+        <ul>
+          <li><a href="#">More on {frontmatter.technology || 'Web Development'}</a></li>
+          <li><a href="#">Similar {frontmatter.level || ''} Level Content</a></li>
+          <li><a href="#">Other {frontmatter.category || 'Articles'}</a></li>
+        </ul>
+      </div>
+    </footer>
+  </article>
+</Layout>
+
+<style>
+  .blog-post {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .blog-post header {
+    margin-bottom: 2rem;
+  }
+
+  .blog-post h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--astro-text-accent);
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    color: var(--astro-text-secondary);
+  }
+
+  .tech-badge {
+    background-color: #3b82f6; /* Tailwind blue-500 */
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .level-badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .level-beginner {
+    background-color: #10b981; /* Tailwind green-500 */
+    color: white;
+  }
+
+  .level-intermediate {
+    background-color: #f59e0b; /* Tailwind amber-500 */
+    color: white;
+  }
+
+  .level-advanced {
+    background-color: #ef4444; /* Tailwind red-500 */
+    color: white;
+  }
+
+  .tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+
+  .tag {
+    background-color: var(--astro-accent-low);
+    color: var(--astro-accent-high);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+  }
+
+  .author-card {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--astro-border);
+  }
+
+  .author-card img {
+    border-radius: 50%;
+  }
+
+  .related-posts {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--astro-border);
+  }
+
+  .related-posts h3 {
+    margin-bottom: 1rem;
+    color: var(--astro-text-accent);
+  }
+
+  .related-posts ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .related-posts li {
+    padding: 0.25rem 0;
+  }
+
+  .related-posts a {
+    color: var(--astro-accent-high);
+    text-decoration: none;
+  }
+
+  .related-posts a:hover {
+    text-decoration: underline;
+  }
+</style>

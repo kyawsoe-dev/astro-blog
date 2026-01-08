@@ -1,0 +1,8 @@
+/// <reference types="astro/client" />
+/// <reference types="@astrojs/starlight/types" />
+
+declare module "virtual:starlight/user-config" {
+  import type { StarlightUserConfig } from "@astrojs/starlight/types";
+  const config: StarlightUserConfig;
+  export default config;
+}
