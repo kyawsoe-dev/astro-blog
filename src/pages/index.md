@@ -1077,6 +1077,12 @@ pagination: false
     .hero-section {
       padding: 2rem 0;
     }
+    
+    .btn {
+      width: 100%;
+      max-width: 300px;
+      padding: 0.9rem 0rem;
+    }
   }
 
 </style>
