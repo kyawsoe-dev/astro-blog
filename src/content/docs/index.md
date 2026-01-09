@@ -4,7 +4,8 @@ description: 'Full-stack developer passionate about building web applications an
 template: 'doc'
 editUrl: false
 lastUpdated: false
-sidebar: false
+sidebar:
+  hidden: true
 toc: false
 pagination: false
 ---

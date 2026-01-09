@@ -16,6 +16,8 @@ goals:
 tags: ["javascript", "programming", "web-development"]
 technology: "JavaScript"
 published: true
+courseSlug: "javascript-mastery"
+template: "../../layouts/CoursePageLayout.astro"
 ---
 
 This comprehensive course will take you from JavaScript fundamentals to advanced concepts. You'll learn everything you need to become a proficient JavaScript developer.

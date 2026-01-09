@@ -5,7 +5,7 @@ author: Kyaw Soe
 difficulty: intermediate
 duration: "3 weeks"
 lessonsCount: 3
-prerequisites: 
+prerequisites:
   - Basic HTML and CSS knowledge
   - Understanding of CSS selectors and properties
 goals:
@@ -16,6 +16,8 @@ goals:
 tags: ['css', 'layout', 'flexbox', 'grid', 'responsive-design']
 technology: 'CSS'
 published: true
+courseSlug: "css-modern-layouts"
+template: "../../layouts/CoursePageLayout.astro"
 ---
 
 

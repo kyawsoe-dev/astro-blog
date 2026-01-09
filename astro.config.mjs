@@ -47,8 +47,7 @@ export default defineConfig({
         },
         { label: "About", link: "/about/" },
       ],
-      customCss: ["./src/styles/blog.css"],
-      head: [],
+      customCss: ["./src/styles/blog.css"]
     }),
 
     vercel(),

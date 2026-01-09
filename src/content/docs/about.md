@@ -1,13 +1,15 @@
 ---
 title: 'About Me'
 description: 'Learn more about the developer behind this blog and what this site is about.'
-template: 'page'
+template: 'doc'
 editUrl: false
 lastUpdated: false
 toc: false
 pagination: false
-sidebar: false
+sidebar:
+  hidden: true
 ---
+
 
 <div class="about-hero">
   <div class="about-container">

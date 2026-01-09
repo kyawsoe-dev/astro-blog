@@ -1,75 +1,64 @@
 ---
-// Course Layout Component
+import { getCollection } from 'astro:content';
 
-export interface Props {
-  frontmatter: {
-    title: string;
-    description: string;
-    author: string;
-    heroImage?: string;
-    difficulty: 'beginner' | 'intermediate' | 'advanced';
-    duration?: string;
-    lessonsCount: number;
-    prerequisites?: string[];
-    goals?: string[];
-    tags?: string[];
-    technology?: string;
-    published: boolean;
-  };
-  lessons: {
-    slug: string;
-    title: string;
-    lessonNumber: number;
-    description: string;
-  }[];
-}
+// Get all blog posts to find lessons for this course
+const courseSlug = Astro.props.frontmatter.courseSlug;
+const blogPosts = await getCollection('blog', (post: any) => {
+  return post.data.course === courseSlug && post.data.published !== false;
+});
 
-const { frontmatter, lessons } = Astro.props;
+// Prepare lessons data
+const lessons = blogPosts.map((post: any) => ({
+  slug: post.slug,
+  title: post.data.title,
+  lessonNumber: post.data.lessonNumber || 0,
+  description: post.data.description || '',
+}));
 
 // Sort lessons by lesson number
-const sortedLessons = lessons.sort((a, b) => a.lessonNumber - b.lessonNumber);
+const sortedLessons = lessons.sort((a: any, b: any) => a.lessonNumber - b.lessonNumber);
 ---
 
 <article class="course-page">
   <header class="course-header">
-    <h1>{frontmatter.title}</h1>
-    <p class="course-description">{frontmatter.description}</p>
+    <h1>{Astro.props.frontmatter.title}</h1>
+    <p class="course-description">{Astro.props.frontmatter.description}</p>
 
     <div class="course-meta">
-      <div class="course-badge difficulty-{frontmatter.difficulty}">
-        {frontmatter.difficulty.charAt(0).toUpperCase() + frontmatter.difficulty.slice(1)}
+      <div class="course-badge difficulty-{Astro.props.frontmatter.difficulty}">
+        {Astro.props.frontmatter.difficulty.charAt(0).toUpperCase() + Astro.props.frontmatter.difficulty.slice(1)}
       </div>
-      {frontmatter.duration && (
+      {Astro.props.frontmatter.duration && (
         <div class="course-badge duration">
-          Duration: {frontmatter.duration}
+          Duration: {Astro.props.frontmatter.duration}
         </div>
       )}
       <div class="course-badge lessons">
-        {frontmatter.lessonsCount} Lessons
+        {sortedLessons.length} Lessons
       </div>
-      {frontmatter.technology && (
+      {Astro.props.frontmatter.technology && (
         <div class="course-badge technology">
-          {frontmatter.technology}
+          {Astro.props.frontmatter.technology}
         </div>
       )}
     </div>
 
-    {frontmatter.goals && frontmatter.goals.length > 0 && (
+    {Astro.props.frontmatter.goals && Astro.props.frontmatter.goals.length > 0 && (
       <div class="course-goals">
         <h3>What You'll Learn</h3>
         <ul>
-          {frontmatter.goals.map((goal: any, index: any) => (
+          {Astro.props.frontmatter.goals.map((goal: any, index: any) => (
             <li id={`goal-${index}`}>{goal}</li>
           ))}
         </ul>
       </div>
     )}
 
-    {frontmatter.prerequisites && frontmatter.prerequisites.length > 0 && (
+    {Astro.props.frontmatter.prerequisites && Astro.props.frontmatter.prerequisites.length > 0 && (
       <div class="course-prerequisites">
         <h3>Prerequisites</h3>
         <ul>
-          {frontmatter.prerequisites.map((prereq: any, index: any) => (
+          {Astro.props.frontmatter.prerequisites.map((prereq: any, index: any) => (
             <li id={`prereq-${index}`}>{prereq}</li>
           ))}
         </ul>

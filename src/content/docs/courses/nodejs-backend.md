@@ -16,6 +16,8 @@ goals:
 tags: ["nodejs", "backend", "api", "express"]
 technology: "Node.js"
 published: true
+courseSlug: "nodejs-backend"
+template: "../../layouts/CoursePageLayout.astro"
 ---
 
 Learn to build scalable and efficient backend services using Node.js. This course covers everything from setting up your first server to deploying production-ready applications.

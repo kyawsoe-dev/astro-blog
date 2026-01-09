@@ -1,23 +1,19 @@
 ---
-import { ContentPage } from 'f:@astrojs/starlight/components/ContentPage.astro';
-
 // This layout extends Starlight's default content page
 // It adds technology badges and level indicators to blog posts
 ---
 
-<ContentPage>
-  <div class="blog-meta-enhanced">
-    {Astro.props.frontmatter.technology && (
-      <span class="tech-badge">{Astro.props.frontmatter.technology}</span>
-    )}
-    {Astro.props.frontmatter.level && (
-      <span class={`level-badge level-${Astro.props.frontmatter.level}`}>
-        {Astro.props.frontmatter.level.charAt(0).toUpperCase() + Astro.props.frontmatter.level.slice(1)}
-      </span>
-    )}
-  </div>
-  <slot />
-</ContentPage>
+<div class="blog-meta-enhanced">
+  {Astro.props.frontmatter.technology && (
+    <span class="tech-badge">{Astro.props.frontmatter.technology}</span>
+  )}
+  {Astro.props.frontmatter.level && (
+    <span class={`level-badge level-${Astro.props.frontmatter.level}`}>
+      {Astro.props.frontmatter.level.charAt(0).toUpperCase() + Astro.props.frontmatter.level.slice(1)}
+    </span>
+  )}
+</div>
+<slot />
 
 <style>
   .blog-meta-enhanced {
