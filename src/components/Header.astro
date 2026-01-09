@@ -2,8 +2,15 @@
 import ThemeToggle from "./ThemeToggle.astro";
 
 const pathname = Astro.url.pathname;
-const isActive = (path: any) =>
-  pathname === path || (pathname.startsWith(path) && path !== "/");
+const isActive = (path: any) => {
+  const normalizedPathname = pathname.endsWith("/") ? pathname : pathname + "/";
+  const normalizedPath = path.endsWith("/") ? path : path + "/";
+
+  return (
+    normalizedPathname === normalizedPath ||
+    (normalizedPathname.startsWith(normalizedPath) && path !== "/")
+  );
+};
 ---
 
 <header class="site-header">
@@ -26,7 +33,7 @@ const isActive = (path: any) =>
           href="/about/"
           class={`nav-link ${isActive("/about/") ? "active" : ""}`}>About</a
         >
-        <ThemeToggle />
+        <!-- <ThemeToggle /> -->
       </div>
       <button
         class="mobile-menu-toggle"
