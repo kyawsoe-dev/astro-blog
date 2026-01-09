@@ -1012,6 +1012,12 @@ pagination: false
     .contact-section h2 {
       font-size: 2.25rem;
     }
+
+    .btn {
+      width: 100%;
+      max-width: 300px;
+      padding: 0.9rem 0rem;
+    }
   }
 
   @media (max-width: 480px) {
