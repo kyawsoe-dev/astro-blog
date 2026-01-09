@@ -1,31 +1,31 @@
 <div class="theme-toggle-container">
   <button
     class="theme-toggle-btn"
-    onclick="cycleTheme()"
+    onclick="toggleDropdown()"
     aria-label="Toggle theme"
     title="Change theme"
   >
     <span class="theme-icon" id="theme-icon">☀️</span>
   </button>
 
-  <div class="theme-dropdown">
+  <div class="theme-dropdown" id="theme-dropdown">
     <button
       class="theme-option"
-      onclick="setTheme('light')"
+      onclick="setThemeAndClose('light')"
       aria-label="Switch to light theme"
     >
       <span class="theme-icon">☀️</span> Light
     </button>
     <button
       class="theme-option"
-      onclick="setTheme('dark')"
+      onclick="setThemeAndClose('dark')"
       aria-label="Switch to dark theme"
     >
       <span class="theme-icon">🌙</span> Dark
     </button>
     <button
       class="theme-option"
-      onclick="setTheme('auto')"
+      onclick="setThemeAndClose('auto')"
       aria-label="Switch to auto theme"
     >
       <span class="theme-icon">💻</span> Auto
@@ -80,27 +80,39 @@
     }
   }
 
-  // Function to set the theme
-  function setTheme(theme: any) {
+  // Function to set the theme and close dropdown
+  function setThemeAndClose(theme: any) {
     localStorage.setItem('theme', theme);
     applyTheme(theme);
+    closeDropdown();
   }
 
-  // Function to cycle through themes
-  function cycleTheme() {
-    const current = getCurrentTheme();
-    let nextTheme;
-
-    if (current === 'light') {
-      nextTheme = 'dark';
-    } else if (current === 'dark') {
-      nextTheme = 'auto';
-    } else {
-      nextTheme = 'light';
+  // Function to toggle the dropdown
+  function toggleDropdown() {
+    const dropdown = document.getElementById('theme-dropdown');
+    if (dropdown) {   // <-- only toggle if dropdown exists
+      dropdown.classList.toggle('show');
     }
-
-    setTheme(nextTheme);
   }
+
+  function closeDropdown() {
+    const dropdown = document.getElementById('theme-dropdown');
+    if (dropdown) {
+      dropdown.classList.remove('show');
+    }
+  }
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', function(event) {
+    const dropdownContainer = document.querySelector('.theme-toggle-container');
+    const dropdown = document.getElementById('theme-dropdown');
+
+    // Make sure dropdownContainer exists and event.target is a Node
+    if (dropdownContainer && event.target instanceof Node && !dropdownContainer.contains(event.target)) {
+      closeDropdown();
+    }
+  });
+
 
   // Initialize theme on page load
   document.addEventListener('DOMContentLoaded', function() {
@@ -109,11 +121,17 @@
 
     // Listen for system theme changes when in auto mode
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
-      if (getCurrentTheme() === 'auto') {
+      if (localStorage.getItem('theme') === 'auto') {
         applyTheme('auto');
       }
     });
   });
+
+  // Make functions available globally
+  (window as any).setThemeAndClose = setThemeAndClose;
+  (window as any).toggleDropdown = toggleDropdown;
+  (window as any).closeDropdown = closeDropdown;
+
 </script>
 
 <style>
@@ -131,7 +149,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
     font-size: 1.2rem;
   }
 
@@ -150,14 +168,22 @@
     padding: 0.5rem;
     min-width: 120px;
     box-shadow: 0 4px 6px var(--sl-color-gray-5);
-    display: none;
     z-index: 100;
     flex-direction: column;
     gap: 0.25rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    max-height: 0;
+    overflow: hidden;
   }
 
-  .theme-toggle-container:hover .theme-dropdown {
-    display: flex;
+  .theme-dropdown.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    max-height: 200px;
   }
 
   .theme-option {
@@ -171,11 +197,12 @@
     border-radius: 0.25rem;
     text-align: left;
     font-size: 0.9rem;
-    transition: background 0.2s ease;
+    transition: all 0.2s ease;
   }
 
   .theme-option:hover {
     background: var(--sl-color-gray-3);
+    transform: translateX(5px);
   }
 
   .theme-option.active {

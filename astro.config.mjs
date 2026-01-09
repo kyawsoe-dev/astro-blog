@@ -7,9 +7,9 @@ export default defineConfig({
 
   integrations: [
     starlight({
-      title: "Kyaw Soe's Blog",
+      title: "",
       logo: {
-        src: "./src/assets/logo.png",
+        src: "./public/logo.png",
         alt: "Kyaw Soe Logo",
       },
       social: [

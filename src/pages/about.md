@@ -1,15 +1,12 @@
 ---
-title: 'About Me'
-description: 'Learn more about the developer behind this blog and what this site is about.'
-template: 'doc'
+title: "About Me"
+description: "Learn more about the developer behind this blog and what this site is about."
+layout: "../layouts/CustomLayout.astro"
 editUrl: false
 lastUpdated: false
 toc: false
 pagination: false
-sidebar:
-  hidden: true
 ---
-
 
 <div class="about-hero">
   <div class="about-container">
@@ -19,7 +16,7 @@ sidebar:
           <img src="/me.jpg" alt="Kyaw Soe Profile Picture" />
         </div>
         <div class="profile-info">
-          <h1>Hi, I'm Kyaw Soe 👋</h1>
+          <h1>Hi, I'm Kyaw Soe</h1>
           <p class="role">Full-Stack Developer & Technical Writer</p>
           <p class="location">Based in Myanmar</p>
         </div>
@@ -42,7 +39,6 @@ sidebar:
       working with production systems. My goal is to help other developers solve problems faster
       and write better code.
     </p>
-
     <div class="journey-highlights">
       <div class="highlight-card">
         <h3>Experience</h3>
@@ -66,7 +62,6 @@ sidebar:
       not just another tutorial dump. I document solutions to problems I encounter in my
       daily work, so I don't forget them and others can benefit too.
     </p>
-
     <div class="mission-goals">
       <div class="goal-item">
         <div class="goal-icon">📚</div>
@@ -136,8 +131,7 @@ sidebar:
 
   <section class="connect-section">
     <h2>Connect With Me</h2>
-    <p>Feel free to reach out if you have questions, suggestions, or just want to connect!</p>
-
+    <p class="connect-text">Feel free to reach out if you have questions, suggestions, or just want to connect!</p>
     <div class="social-links">
       <a href="https://github.com/kyawsoe-dev" target="_blank" rel="noopener" class="social-link">
         <div class="icon">💻</div>
@@ -254,6 +248,10 @@ sidebar:
 
   .role {
     color: var(--primary);
+  }
+
+  .connect-text {
+    text-align: center;
   }
 
   .intro-section, .mission-section, .skills-section, .connect-section {
@@ -392,7 +390,7 @@ sidebar:
 
   .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 2.5rem;
   }
 
@@ -473,56 +471,56 @@ sidebar:
   }
 
   .social-links {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-top: 2.5rem;
-    flex-wrap: wrap;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
   }
 
   .social-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 1rem 2rem;
-    background: var(--primary);
-    color: white;
-    text-decoration: none;
-    border-radius: 0.75rem;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    box-shadow: 0 4px 6px var(--shadow);
-    font-weight: 600;
-    position: relative;
-    overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 2rem;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 0.75rem;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      box-shadow: 0 4px 6px var(--shadow);
+      font-weight: 600;
+      position: relative;
+      overflow: hidden;
   }
 
   .social-link::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    transition: 0.5s;
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: 0.5s;
   }
 
   .social-link:hover::before {
-    left: 100%;
+      left: 100%;
   }
 
   .social-link:hover {
-    background: var(--primary-dark);
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(49, 130, 206, 0.3);
+      background: var(--primary-dark);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(49, 130, 206, 0.3);
   }
 
   .social-link .icon {
-    font-size: 1.5rem;
+      font-size: 1.5rem;
   }
 
   /* Responsive Design */
-  @media (max-width: 992px) {
+  @media (max-width: 1199px) {
     .profile-section {
       flex-direction: column;
       text-align: center;
@@ -530,11 +528,51 @@ sidebar:
     }
 
     .profile-info h1 {
+      font-size: 2.8rem;
+    }
+
+    .role, .location {
+      font-size: 1.2rem;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .about-container {
+      padding: 0 1.25rem;
+    }
+
+    .about-hero {
+      padding: 5rem 0;
+    }
+
+    .profile-info h1 {
       font-size: 2.5rem;
+    }
+
+    .profile-info h1::after {
+      left: 50%;
+      transform: translateX(-50%);
     }
 
     .role, .location {
       font-size: 1.1rem;
+    }
+
+    .intro-section h2, .mission-section h2, .skills-section h2, .connect-section h2 {
+      font-size: 2.5rem;
+      left: auto;
+      transform: none;
+      text-align: center;
+    }
+
+    .intro-section h2::after, .mission-section h2::after, .skills-section h2::after, .connect-section h2::after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .intro-section p, .mission-section p {
+      font-size: 1.15rem;
+      padding: 0 1rem;
     }
   }
 
@@ -557,7 +595,7 @@ sidebar:
     }
 
     .intro-section, .mission-section, .skills-section, .connect-section {
-      padding: 4rem 0;
+      padding: 3.5rem 0;
     }
 
     .intro-section h2, .mission-section h2, .skills-section h2, .connect-section h2 {
@@ -566,32 +604,113 @@ sidebar:
 
     .intro-section p, .mission-section p {
       font-size: 1.1rem;
+      padding: 0 0.5rem;
+    }
+
+    .journey-highlights {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .mission-goals {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .skills-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
     }
 
     .social-links {
-      flex-direction: column;
-      align-items: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.25rem;
+        margin-top: 2rem;
     }
 
     .social-link {
-      width: 100%;
-      max-width: 350px;
-      justify-content: center;
+        width: 90%;
+        max-width: 320px;
+        justify-content: center;
+        padding: 0.8rem 1.5rem;
+        font-size: 0.95rem;
+    }
+
+    .social-link .icon {
+        font-size: 1.3rem;
     }
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 576px) {
     .about-hero {
       padding: 3rem 0;
+    }
+
+    .profile-image img {
+      width: 160px;
+      height: 160px;
     }
 
     .profile-info h1 {
       font-size: 2rem;
     }
 
+    .profile-info h1::after {
+      width: 50px;
+    }
+
+    .role, .location {
+      font-size: 1rem;
+    }
+
+    .intro-section, .mission-section, .skills-section, .connect-section {
+      padding: 3rem 0;
+    }
+
+    .intro-section h2, .mission-section h2, .skills-section h2, .connect-section h2 {
+      font-size: 1.9rem;
+    }
+
+    .intro-section p, .mission-section p {
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .highlight-card, .goal-item, .skill-category {
+      padding: 1.75rem;
+    }
+
+    .highlight-card h3 {
+      font-size: 1.3rem;
+    }
+
+    .goal-content h3 {
+      font-size: 1.2rem;
+    }
+
+    .skill-category h3 {
+      font-size: 1.3rem;
+    }
+
+    .social-link {
+      max-width: 100%;
+      padding: 0.8rem 1.25rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .profile-info h1 {
+      font-size: 1.8rem;
+    }
+
     .profile-image img {
-      width: 150px;
-      height: 150px;
+      width: 140px;
+      height: 140px;
+    }
+
+    .intro-section h2, .mission-section h2, .skills-section h2, .connect-section h2 {
+      font-size: 1.7rem;
     }
 
     .journey-highlights, .mission-goals, .skills-grid {
@@ -602,10 +721,30 @@ sidebar:
       flex-direction: column;
       align-items: center;
       text-align: center;
+      padding: 1.5rem;
     }
 
     .goal-icon {
       margin-bottom: 1rem;
+      width: 50px;
+      height: 50px;
+      font-size: 1.8rem;
+    }
+
+    .social-links {
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+
+    .social-link {
+        width: 95%;
+        padding: 0.7rem 1rem;
+        font-size: 0.9rem;
+        justify-content: center;
+    }
+
+    .social-link .icon {
+        font-size: 1.2rem;
     }
   }
 </style>

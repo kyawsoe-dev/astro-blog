@@ -1,25 +1,24 @@
 ---
 import Header from "../components/Header.astro";
 
-const {
-  title,
-  description,
-  showHeader = true,
-} = Astro.props;
+const { title, description, showHeader = true } = Astro.props;
 ---
 
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title || "Astro"}</title>
+    <title>{title || "Kyaw Soe - Developer Portfolio"}</title>
     <link rel="icon" href="/favicon.svg" type="image/x-icon" />
   </head>
 
-  <body class="min-h-screen bg-white text-gray-900" data-pagefind-body>
+  <body
+    class="flex flex-col min-h-screen bg-white text-gray-900"
+    data-pagefind-body
+  >
     {showHeader && <Header />}
 
-    <main>
+    <main class="flex-grow">
       <slot />
     </main>
   </body>

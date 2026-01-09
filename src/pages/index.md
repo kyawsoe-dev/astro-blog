@@ -1,11 +1,9 @@
 ---
-title: 'Kyaw Soe - Developer Portfolio'
-description: 'Full-stack developer passionate about building web applications and sharing knowledge with the developer community.'
-template: 'doc'
+title: "Kyaw Soe - Developer Portfolio"
+description: "Full-stack developer passionate about building web applications and sharing knowledge with the developer community."
+layout: "../layouts/CustomLayout.astro"
 editUrl: false
 lastUpdated: false
-sidebar:
-  hidden: true
 toc: false
 pagination: false
 ---
@@ -17,7 +15,7 @@ pagination: false
       <div class="hero-content">
         <div class="hero-text">
           <h1>Hi, I'm <span class="highlight">Kyaw Soe</span></h1>
-          <h2>A <span class="typed-text">Full-Stack Developer</span></h2>
+          <h2><span class="typed-text">Full-Stack Developer</span></h2>
           <p>
             I build modern web applications with JavaScript, TypeScript, and
             cutting-edge frameworks.
@@ -78,7 +76,7 @@ pagination: false
     <div class="container">
       <h2>Featured Projects</h2>
       <div class="projects-grid">
-        <div class="col-md-6 col-lg-4">
+        <div class="col-md-6 col-lg-4 mb-3">
           <div class="project-card-no-image">
             <h3 class="h5 mb-2">Realtime Chat App</h3>
             <p class="text-muted">
@@ -101,8 +99,7 @@ pagination: false
             </div>
           </div>
         </div>
-
-        <div class="col-md-6 col-lg-4">
+        <div class="col-md-6 col-lg-4 mb-3">
           <div class="project-card-no-image">
             <h3 class="h5 mb-2">E-Commerce Platform</h3>
             <p class="text-muted">
@@ -125,15 +122,13 @@ pagination: false
             </div>
           </div>
         </div>
-
-        <div class="col-md-6 col-lg-4">
+        <div class="col-md-6 col-lg-4 mb-3">
           <div class="project-card-no-image">
             <h3 class="h5 mb-2">API Monitoring Dashboard</h3>
             <p class="text-muted">
             A full-stack API monitoring dashboard that tracks uptime, latency, and performance for all your services.
             For intuitive monitoring and integrated with Sentry for automatic error tracking and issue monitoring.
             </p>
-
             <div class="mb-3">
                 <span class="badge bg-secondary text-white me-1">Typescript</span>
                 <span class="badge bg-secondary text-white me-1">React</span>
@@ -150,8 +145,7 @@ pagination: false
             </div>
           </div>
         </div>
-
-        <div class="col-md-6 col-lg-4">
+        <div class="col-md-6 col-lg-4 mb-3">
           <div class="project-card-no-image">
             <h3 class="h5 mb-2">Multi-Database Manager CLI</h3>
             <p class="text-muted">A CLI tool to manage multiple databases from a single interface. It supports Postgres, MySQL, and MongoDB and convenient for SQL common operations.</p>
@@ -169,8 +163,7 @@ pagination: false
             </div>
           </div>
         </div>
-
-        <div class="col-md-6 col-lg-4">
+        <div class="col-md-6 col-lg-4 mb-3">
           <div class="project-card-no-image">
             <h3 class="h5 mb-2">NestJS Prisma Generator CLI</h3>
             <p class="text-muted">A CLI tool to generate fully modular NestJS projects with Prisma, featuring pre-configured Swagger, authentication, AWS S3 integration, and Prisma setup.</p>
@@ -189,8 +182,7 @@ pagination: false
             </div>
           </div>
         </div>
-
-        <div class="col-md-6 col-lg-4">
+        <div class="col-md-6 col-lg-4 mb-3">
           <div class="project-card-no-image">
             <h3 class="h5 mb-2">MetaClean Telegram Bot</h3>
             <p class="text-muted">A Telegram bot that extracts and displays image metadata, detects GPS locations with Google Maps links, and provides metadata-free images.</p>
@@ -206,27 +198,6 @@ pagination: false
                 <i class="ion-social-github me-1"></i> Github
                 </a>
                 <a href="https://t.me/ImageMetaCleanerBot" target="_blank" class="btn btn-outline-primary btn-sm">
-                <i class="ion-android-open me-1"></i> Live
-                </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-4">
-          <div class="project-card-no-image">
-            <h3 class="h5 mb-2">Telegram Bot</h3>
-            <p class="text-muted">A Telegram bot that can download, convert, cut, and merge YouTube videos into MP3, as well as provide AI chat and OCR features.</p>
-            <div class="mb-3">
-                <span class="badge bg-secondary text-white me-1">Telegraf</span>
-                <span class="badge bg-secondary text-white me-1">FFMPEG</span>
-                <span class="badge bg-secondary text-white me-1">Glob</span>
-                <span class="badge bg-secondary text-white me-1">Typescript</span>
-            </div>
-            <div>
-                <a href="https://github.com/kyawsoe-dev/nestjs-generator-cli" target="_blank" class="btn btn-outline-secondary btn-sm me-2">
-                <i class="ion-social-github me-1"></i> Github
-                </a>
-                <a href="https://t.me/video2mp3_converter_192_bot" target="_blank" class="btn btn-outline-primary btn-sm">
                 <i class="ion-android-open me-1"></i> Live
                 </a>
             </div>
@@ -278,13 +249,13 @@ pagination: false
         out!
       </p>
       <div class="contact-buttons">
-        <a href="mailto:kyawsoedeveloper@gmail.com" class="btn btn-primary"
-          >Email Me</a
-        >
         <a
           href="https://github.com/kyawsoe-dev"
           target="_blank"
-          class="btn btn-secondary">GitHub</a
+          class="btn btn-secondary"><div class="icon">💻</div> GitHub</a
+        >
+        <a href="mailto:kyawsoedeveloper@gmail.com" class="btn btn-primary"
+          ><div class="icon">✉️</div> Email</a
         >
       </div>
     </div>
@@ -404,8 +375,16 @@ pagination: false
 
   .hero-buttons {
     display: flex;
-    gap: 1.25rem;
+    gap: 1.25rem; 
     flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 0; 
+  }
+  
+  .hero-buttons .btn {
+    flex: 1 1 auto;
+    min-width: 140px;
+    max-width: 240px;
   }
 
   .btn {
@@ -835,8 +814,18 @@ pagination: false
   }
 
   .view-all {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding: 0 1rem;
+    margin-top: 2rem;
+    box-sizing: border-box;
   }
+
+  .view-all .btn {
+    width: auto;
+    max-width: 300px;
+  }
+
 
   /* Contact Section */
   .contact-section {
@@ -851,7 +840,7 @@ pagination: false
     color: var(--text-dark);
     position: relative;
     display: inline-block;
-    left: 50%;
+    left: 10%;
     transform: translateX(-50%);
   }
 
@@ -881,7 +870,16 @@ pagination: false
     justify-content: center;
     gap: 1.5rem;
     flex-wrap: wrap;
+    padding: 0 1rem;
+    box-sizing: border-box;
   }
+
+  .contact-buttons .btn {
+    flex: 1 1 auto;
+    max-width: 250px;
+    gap: 1rem;
+  }
+
 
   /* Responsive Design */
   @media (max-width: 992px) {
@@ -944,13 +942,77 @@ pagination: false
     }
 
     .contact-buttons {
-      flex-direction: column;
-      align-items: center;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+      gap: 1rem;
+    }
+
+    .contact-buttons .btn {
+      width: 48%;
+      max-width: none;
     }
 
     .btn {
       width: 100%;
       max-width: 300px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 0 1rem;
+    }
+
+    .hero-content {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .hero-text p {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-buttons {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem; 
+      padding: 0 1rem;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .hero-buttons .btn {
+      width: 100%; 
+      max-width: 300px;
+    }
+
+    .hero-section {
+      padding: 3rem 0;
+    }
+
+    .hero-text h1 {
+      font-size: 2.3rem;
+    }
+
+    .hero-text h2 {
+      font-size: 1.5rem;
+    }
+
+    .skills-section,
+    .projects-section,
+    .blog-section,
+    .contact-section {
+      padding: 4rem 0;
+    }
+
+    .skills-section h2,
+    .projects-section h2,
+    .blog-section h2,
+    .contact-section h2 {
+      font-size: 2.25rem;
     }
   }
 
@@ -964,13 +1026,17 @@ pagination: false
     }
 
     .hero-buttons {
-      flex-direction: column;
-      align-items: center;
+      gap: 0.75rem;
     }
 
     .btn {
       width: 100%;
       max-width: 100%;
+      padding: 0.8rem 1.5rem;
+    }
+
+    .hero-section {
+      padding: 2rem 0;
     }
   }
 </style>
