@@ -1,16 +1,14 @@
-# Kyaw Soe's Developer Blog
-
-A production-ready developer blog built with Astro and Starlight.
+# Kyaw Soe's Blog
 
 ## Features
 
-- ✅ Modern blog with category and tag filtering
-- ✅ Responsive design with mobile-first approach
-- ✅ SEO optimized with proper metadata
-- ✅ Fast performance with Vercel integration
-- ✅ Built-in search functionality
-- ✅ Pagination for blog posts
-- ✅ Analytics and performance monitoring
+- Modern blog with category and tag filtering
+- Responsive design with mobile-first approach
+- SEO optimized with proper metadata
+- Fast performance with Vercel integration
+- Built-in search functionality
+- Pagination for blog posts
+- Analytics and performance monitoring
 
 ## Tech Stack
 
