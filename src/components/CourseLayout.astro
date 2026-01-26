@@ -1,6 +1,4 @@
 ---
-// Course Layout Component
-
 export interface Props {
   frontmatter: {
     title: string;
@@ -26,7 +24,6 @@ export interface Props {
 
 const { frontmatter, lessons } = Astro.props;
 
-// Sort lessons by lesson number
 const sortedLessons = lessons.sort((a, b) => a.lessonNumber - b.lessonNumber);
 ---
 

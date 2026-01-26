@@ -1,13 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
 
-// Get all blog posts to find lessons for this course
 const courseSlug = Astro.props.frontmatter.courseSlug;
 const blogPosts = await getCollection('blog', (post: any) => {
   return post.data.course === courseSlug && post.data.published !== false;
 });
 
-// Prepare lessons data
 const lessons = blogPosts.map((post: any) => ({
   slug: post.slug,
   title: post.data.title,
@@ -15,7 +13,6 @@ const lessons = blogPosts.map((post: any) => ({
   description: post.data.description || '',
 }));
 
-// Sort lessons by lesson number
 const sortedLessons = lessons.sort((a: any, b: any) => a.lessonNumber - b.lessonNumber);
 ---
 

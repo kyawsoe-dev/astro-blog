@@ -1,7 +1,6 @@
 ---
-// Enhanced Blog Post Layout for NestJS Series with Navigation
-import Layout from './Layout.astro';
-import { getCollection } from 'astro:content';
+import Layout from "./Layout.astro";
+import { getCollection } from "astro:content";
 
 export interface Props {
   frontmatter: {
@@ -13,7 +12,7 @@ export interface Props {
     tags?: string[];
     category?: string;
     technology?: string;
-    level?: 'beginner' | 'intermediate' | 'advanced';
+    level?: "beginner" | "intermediate" | "advanced";
     draft?: boolean;
     readingTime?: number;
   };
@@ -21,33 +20,31 @@ export interface Props {
 
 const { frontmatter } = Astro.props;
 
-// Get all NestJS posts to determine next/previous
-const allNestJSPosts = (await getCollection('docs', ({ id }) =>
-  id.includes('nestjs-') // Only include nestjs-* files in the main blog directory
-)).sort((a, b) =>
-  new Date(a.data.pubDate).getTime() - new Date(b.data.pubDate).getTime()
+const allNestJSPosts = (
+  await getCollection("docs", ({ id }: any) => id.includes("nestjs-"))
+).sort(
+  (a: any, b: any) =>
+    new Date(a.data.pubDate).getTime() - new Date(b.data.pubDate).getTime(),
 );
 
-// Find current post index based on the actual file path
-const currentPathParts = Astro.request.url.pathname.split('/');
+const url = new URL(Astro.request.url);
+const currentPathParts = url.pathname.split("/");
 const currentSlug = currentPathParts[currentPathParts.length - 1];
 
-// Map URL slug to file name
-const fileNameMap = {
-  'nestjs-getting-started': 'nestjs-getting-started.md',
-  'nestjs-authentication': 'nestjs-authentication.md',
-  'nestjs-architecture': 'nestjs-architecture.md'
+const fileNameMap: Record<string, string> = {
+  "nestjs-getting-started": "nestjs-getting-started.md",
+  "nestjs-authentication": "nestjs-authentication.md",
+  "nestjs-architecture": "nestjs-architecture.md",
 };
 
-const currentFileName = fileNameMap[currentSlug] || `${currentSlug}.md`;
+const currentFileName = fileNameMap[currentSlug] ?? `${currentSlug}.md`;
 
-// Since the collection IDs include the full path, we need to match against the full path
-const currentIndex = allNestJSPosts.findIndex(post =>
-  post.id.endsWith(currentFileName) ||
-  post.id.includes(currentFileName.replace('.md', ''))
+const currentIndex = allNestJSPosts.findIndex(
+  (post: any) =>
+    post.id.endsWith(currentFileName) ||
+    post.id.includes(currentFileName.replace(".md", "")),
 );
 
-// Determine previous and next posts
 let prevPost = null;
 let nextPost = null;
 
@@ -60,14 +57,12 @@ if (currentIndex !== -1) {
   }
 }
 
-// Format date consistently
 const formattedDate = new Date(frontmatter.pubDate).toLocaleDateString(
-  'en-US',
-  { year: 'numeric', month: 'long', day: 'numeric' }
+  "en-US",
+  { year: "numeric", month: "long", day: "numeric" },
 );
 
-// In a real implementation, you'd pass the content of the post to calculate reading time
-const readingTime = frontmatter.readingTime || 5; // Default to 5 minutes if not provided
+const readingTime = frontmatter.readingTime || 5;
 ---
 
 <Layout title={frontmatter.title} description={frontmatter.description}>
@@ -80,24 +75,31 @@ const readingTime = frontmatter.readingTime || 5; // Default to 5 minutes if not
         <span class="reading-time">{readingTime} min read</span>
 
         <!-- Technology and Level badges -->
-        {frontmatter.technology && (
-          <span class="tech-badge">{frontmatter.technology}</span>
-        )}
+        {
+          frontmatter.technology && (
+            <span class="tech-badge">{frontmatter.technology}</span>
+          )
+        }
 
-        {frontmatter.level && (
-          <span class={`level-badge level-${frontmatter.level}`}>
-            {frontmatter.level.charAt(0).toUpperCase() + frontmatter.level.slice(1)}
-          </span>
-        )}
+        {
+          frontmatter.level && (
+            <span class={`level-badge level-${frontmatter.level}`}>
+              {frontmatter.level.charAt(0).toUpperCase() +
+                frontmatter.level.slice(1)}
+            </span>
+          )
+        }
       </div>
 
-      {frontmatter.tags && frontmatter.tags.length > 0 && (
-        <div class="tags">
-          {frontmatter.tags.map((tag) => (
-            <span class="tag">{tag}</span>
-          ))}
-        </div>
-      )}
+      {
+        frontmatter.tags && frontmatter.tags.length > 0 && (
+          <div class="tags">
+            {frontmatter.tags.map((tag) => (
+              <span class="tag">{tag}</span>
+            ))}
+          </div>
+        )
+      }
     </header>
 
     <main>
@@ -107,30 +109,47 @@ const readingTime = frontmatter.readingTime || 5; // Default to 5 minutes if not
     <!-- Navigation between series posts -->
     <nav class="series-navigation">
       <div class="nav-links">
-        {prevPost ? (
-          <a href={`/blog/${prevPost.id.replace('.md', '')}`} class="nav-link prev">
-            ← Previous: {prevPost.data.title}
-          </a>
-        ) : (
-          <div class="nav-link disabled">← Previous: None</div>
-        )}
+        {
+          prevPost ? (
+            <a
+              href={`/blog/${prevPost.id.replace(".md", "")}`}
+              class="nav-link prev"
+            >
+              ← Previous: {prevPost.data.title}
+            </a>
+          ) : (
+            <div class="nav-link disabled">← Previous: None</div>
+          )
+        }
 
-        {nextPost ? (
-          <a href={`/blog/${nextPost.id.replace('.md', '')}`} class="nav-link next">
-            Next: {nextPost.data.title} →
-          </a>
-        ) : (
-          <div class="nav-link disabled">Next: None →</div>
-        )}
+        {
+          nextPost ? (
+            <a
+              href={`/blog/${nextPost.id.replace(".md", "")}`}
+              class="nav-link next"
+            >
+              Next: {nextPost.data.title} →
+            </a>
+          ) : (
+            <div class="nav-link disabled">Next: None →</div>
+          )
+        }
       </div>
     </nav>
 
     <footer>
       <div class="author-card">
-        <img src="/public/logo.png" alt={frontmatter.author} width="80" height="80" />
+        <img
+          src="/public/logo.png"
+          alt={frontmatter.author}
+          width="80"
+          height="80"
+        />
         <div>
           <h3>About the Author</h3>
-          <p>{frontmatter.author} is a passionate developer sharing knowledge and experiences.</p>
+          <p>
+            {frontmatter.author} is a passionate developer sharing knowledge and experiences.
+          </p>
         </div>
       </div>
 
@@ -138,13 +157,19 @@ const readingTime = frontmatter.readingTime || 5; // Default to 5 minutes if not
       <div class="related-posts">
         <h3>Complete NestJS Series</h3>
         <ol class="series-list">
-          {allNestJSPosts.map((post, index) => (
-            <li class={`series-item ${post.id === allNestJSPosts[currentIndex]?.id ? 'current' : ''}`}>
-              <a href={`/blog/${post.id.replace('.md', '')}`}>
-                {index + 1}. {post.data.title}
-              </a>
-            </li>
-          ))}
+          {
+            allNestJSPosts.map((post: any, index: any) => (
+              <li
+                class={`series-item ${
+                  post.id === allNestJSPosts[currentIndex]?.id ? "current" : ""
+                }`}
+              >
+                <a href={`/blog/${post.id.replace(".md", "")}`}>
+                  {index + 1}. {post.data.title}
+                </a>
+              </li>
+            ))
+          }
         </ol>
       </div>
     </footer>
@@ -322,7 +347,8 @@ const readingTime = frontmatter.readingTime || 5; // Default to 5 minutes if not
     text-align: right;
   }
 
-  .nav-link.prev:hover, .nav-link.next:hover {
+  .nav-link.prev:hover,
+  .nav-link.next:hover {
     background-color: #dbeafe;
     transform: translateY(-2px);
   }
@@ -344,7 +370,8 @@ const readingTime = frontmatter.readingTime || 5; // Default to 5 minutes if not
       text-align: center;
     }
 
-    .nav-link.prev, .nav-link.next {
+    .nav-link.prev,
+    .nav-link.next {
       text-align: center;
     }
   }

@@ -40,25 +40,6 @@
 
 3. Open [http://localhost:4321](http://localhost:4321) in your browser
 
-### Adding Blog Posts
-
-Create new blog posts in `src/content/blog/` with the following frontmatter:
-
-```markdown
----
-title: "Your Blog Post Title"
-description: "Brief description of your post"
-pubDate: 2024-01-01
-author: "Your Name"
-tags: ["tag1", "tag2", "tag3"]
-category: "Category Name"
-readingTime: 5
-draft: false
----
-
-Your blog content here...
-```
-
 ## Deployment
 
 ### Vercel (Recommended)
@@ -89,13 +70,6 @@ npm run build
 - Critical CSS inlined
 - Images optimized with Sharp
 - Vercel Speed Insights integrated
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
 
 ## License
 

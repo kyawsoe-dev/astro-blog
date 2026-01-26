@@ -34,7 +34,6 @@
 </div>
 
 <script>
-  // Function to get the current theme from localStorage or system preference
   function getCurrentTheme() {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) return savedTheme;
@@ -43,11 +42,9 @@
     return prefersDark ? 'dark' : 'light';
   }
 
-  // Function to apply the theme to the document
   function applyTheme(theme: any) {
     const html = document.documentElement;
 
-    // Remove all theme classes
     html.classList.remove('light', 'dark');
 
     if (theme === 'dark') {
@@ -56,7 +53,7 @@
     } else if (theme === 'light') {
       html.classList.add('light');
       html.style.colorScheme = 'light';
-    } else { // auto
+    } else {
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       if (prefersDark) {
         html.classList.add('dark');
@@ -67,7 +64,6 @@
       }
     }
 
-    // Update the icon in the main button
     const iconElement = document.getElementById('theme-icon');
     if (iconElement) {
       if (theme === 'dark') {

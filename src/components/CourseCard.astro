@@ -1,0 +1,232 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  course: CollectionEntry<"docs">;
+}
+
+const { course } = Astro.props;
+const { data, slug } = course;
+---
+
+<article class="course-card">
+  <header>
+    <h3 class="course-title">
+      <a
+        href={`/courses/${slug}/`}
+        aria-label={`View ${data.title} course details`}
+      >
+        {data.title}
+      </a>
+    </h3>
+    {data.author && <p class="course-author">By {data.author}</p>}
+  </header>
+
+  <div class="course-meta">
+    {
+      data.difficulty && (
+        <span class={`course-difficulty difficulty-${data.difficulty}`}>
+          {data.difficulty.charAt(0).toUpperCase() + data.difficulty.slice(1)}
+        </span>
+      )
+    }
+    {
+      data.technology && (
+        <span class="course-technology">{data.technology}</span>
+      )
+    }
+    {data.duration && <span class="course-duration">{data.duration}</span>}
+  </div>
+
+  <p class="course-description">{data.description}</p>
+
+  <footer class="course-footer">
+    {
+      data.tags && data.tags.length > 0 && (
+        <div class="course-tags">
+          {data.tags.map((tag: any) => (
+            <span class="tag">{tag}</span>
+          ))}
+        </div>
+      )
+    }
+    <a href={`/courses/${slug}/`} class="course-link">View Course</a>
+  </footer>
+</article>
+
+<style>
+  .course-card {
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    background: var(--sl-color-gray-1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+
+  .course-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(
+      90deg,
+      var(--sl-color-accent-low),
+      var(--sl-color-accent)
+    );
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+  .course-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .course-card:hover {
+    transform: translateY(-5px);
+    box-shadow:
+      0 20px 25px -5px rgba(0, 0, 0, 0.1),
+      0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border-color: var(--sl-color-accent);
+  }
+
+  .course-title {
+    margin: 0 0 0.75rem 0;
+    font-size: var(--font-size-xl);
+    line-height: 1.4;
+    color: var(--sl-color-accent-high);
+    font-weight: var(--font-weight-semibold);
+    transition: color 0.2s ease;
+  }
+
+  .course-title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .course-title a:hover {
+    color: var(--sl-color-accent);
+  }
+
+  .course-author {
+    margin: 0 0 1rem 0;
+    color: var(--sl-color-gray-6);
+    font-size: var(--font-size-sm);
+  }
+
+  .course-meta {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .course-difficulty,
+  .course-technology,
+  .course-duration {
+    padding: 0.3rem 0.6rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: var(--font-weight-medium);
+    transition: all 0.2s ease;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+  }
+
+  .course-difficulty {
+    background: var(--sl-color-accent-low);
+    color: var(--sl-color-accent-high);
+  }
+
+  .difficulty-beginner {
+    background: linear-gradient(135deg, #dcfce7, #86efac);
+    color: #166534;
+  }
+
+  .difficulty-intermediate {
+    background: linear-gradient(135deg, #fef3c7, #fbbf24);
+    color: #92400e;
+  }
+
+  .difficulty-advanced {
+    background: linear-gradient(135deg, #fee2e2, #f87171);
+    color: #b91c1c;
+  }
+
+  .course-technology {
+    background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+    color: #4f46e5;
+  }
+
+  .course-duration {
+    background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+    color: #7c3aed;
+  }
+
+  .course-description {
+    margin: 0 0 1.5rem 0;
+    color: var(--sl-color-gray-7);
+    flex-grow: 1;
+  }
+
+  .course-footer {
+    margin-top: auto;
+  }
+
+  .course-tags {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    background: var(--sl-color-gray-3);
+    color: var(--sl-color-text);
+    padding: 0.3rem 0.6rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: var(--font-weight-medium);
+    transition: all 0.2s ease;
+  }
+
+  .tag:hover {
+    background: var(--sl-color-accent);
+    color: white;
+  }
+
+  .course-link {
+    display: inline-block;
+    background: linear-gradient(
+      135deg,
+      var(--sl-color-accent-low),
+      var(--sl-color-accent)
+    );
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: var(--font-weight-semibold);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: 1px solid transparent;
+    box-shadow: 0 4px 6px -1px rgba(var(--sl-color-accent-rgb), 0.3);
+  }
+
+  .course-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(
+      135deg,
+      var(--sl-color-accent),
+      var(--sl-color-accent-high)
+    );
+  }
+</style>

@@ -1,5 +1,4 @@
 ---
-// Blog Post Layout
 import Layout from './Layout.astro';
 
 export interface Props {
@@ -18,14 +17,12 @@ export interface Props {
 
 const { frontmatter } = Astro.props;
 
-// Format date consistently
 const formattedDate = new Date(frontmatter.pubDate).toLocaleDateString(
   'en-US',
   { year: 'numeric', month: 'long', day: 'numeric' }
 );
 
-// In a real implementation, you'd pass the content of the post to calculate reading time
-const readingTime = frontmatter.readingTime || 5; // Default to 5 minutes if not provided
+const readingTime = frontmatter.readingTime || 5;
 ---
 
 <Layout title={frontmatter.title} description={frontmatter.description}>

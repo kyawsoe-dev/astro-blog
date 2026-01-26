@@ -1,5 +1,4 @@
 ---
-// Enhanced Blog Post Layout with Technology Focus
 import Layout from './Layout.astro';
 
 export interface Props {
@@ -11,8 +10,8 @@ export interface Props {
     heroImage?: string;
     tags?: string[];
     category?: string;
-    technology?: string;  // New field for specific technology
-    level?: 'beginner' | 'intermediate' | 'advanced';  // New field for difficulty level
+    technology?: string;
+    level?: 'beginner' | 'intermediate' | 'advanced';
     draft?: boolean;
     readingTime?: number;
   };
@@ -20,14 +19,12 @@ export interface Props {
 
 const { frontmatter } = Astro.props;
 
-// Format date consistently
 const formattedDate = new Date(frontmatter.pubDate).toLocaleDateString(
   'en-US',
   { year: 'numeric', month: 'long', day: 'numeric' }
 );
 
-// In a real implementation, you'd pass the content of the post to calculate reading time
-const readingTime = frontmatter.readingTime || 5; // Default to 5 minutes if not provided
+const readingTime = frontmatter.readingTime || 5;
 ---
 
 <Layout title={frontmatter.title} description={frontmatter.description}>

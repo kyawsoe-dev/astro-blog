@@ -1,14 +1,13 @@
 import { defineCollection, z } from 'astro:content';
 
-// Define schema for docs content (this handles all content in src/content/docs/* including blog, courses, etc.)
 const docs = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
       description: z.string().optional(),
-      pubDate: z.coerce.date().optional(), // For blog posts and courses
-      author: z.string().optional(), // For blog posts and courses
-      heroImage: image().optional(), // For blog posts and courses
+      pubDate: z.coerce.date().optional(),
+      author: z.string().optional(),
+      heroImage: image().optional(),
       tags: z.array(z.string()).optional().default([]),
       category: z.string().optional(),
       technology: z.string().optional(),
