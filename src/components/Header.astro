@@ -69,13 +69,15 @@ const isActive = (path: string) =>
     padding: 0 1.5rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     position: relative;
   }
 
   .nav-brand {
     display: flex;
     align-items: center;
+    position: absolute;
+    left: 1.5rem;
+    z-index: 1002;
   }
 
   .logo-img {
@@ -89,6 +91,7 @@ const isActive = (path: string) =>
     display: flex;
     gap: 1.5rem;
     align-items: center;
+    margin-left: auto;
   }
 
   .nav-link {
@@ -194,7 +197,7 @@ const isActive = (path: string) =>
       menu?.classList.toggle("expanded");
       toggle.setAttribute(
         "aria-expanded",
-        menu?.classList.contains("expanded") ? "true" : "false"
+        menu?.classList.contains("expanded") ? "true" : "false",
       );
     });
 

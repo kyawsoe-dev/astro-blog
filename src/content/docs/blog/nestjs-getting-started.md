@@ -8,7 +8,6 @@ category: 'Backend Development'
 technology: 'NestJS'
 level: 'beginner'
 readingTime: 8
-layout: '../../layouts/NestJSBlogSeriesLayout.astro'
 ---
 
 <div class="blog-meta-enhanced">
