@@ -14,7 +14,7 @@ pagination: false
     <div class="container">
       <div class="hero-content">
         <div class="hero-text">
-          <h1>Hi, I'm <span class="highlight">Kyaw Soe</span></h1>
+          <h1>Hi, I'm <span class="highlight"><span class="letter" style="--delay: 0.1s;">K</span><span class="letter" style="--delay: 0.2s;">y</span><span class="letter" style="--delay: 0.3s;">a</span><span class="letter" style="--delay: 0.4s;">w</span> <span class="letter" style="--delay: 0.5s;">S</span><span class="letter" style="--delay: 0.6s;">o</span><span class="letter" style="--delay: 0.7s;">e</span></span></h1>
           <h2><span class="typed-text">Full-Stack Developer</span></h2>
           <p>
             I build modern web applications with JavaScript, TypeScript, and
@@ -339,6 +339,22 @@ pagination: false
     background: var(--primary);
     border-radius: 2px;
     opacity: 0.3;
+  }
+
+  /* Letter Animation */
+  .letter {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: letterAnimation 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    animation-delay: var(--delay);
+  }
+
+  @keyframes letterAnimation {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .hero-text h2 {
@@ -976,14 +992,14 @@ pagination: false
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      gap: 1rem; 
+      gap: 1rem;
       padding: 0 1rem;
       width: 100%;
       box-sizing: border-box;
     }
 
     .hero-buttons .btn {
-      width: 100%; 
+      width: 100%;
       max-width: 300px;
     }
 
